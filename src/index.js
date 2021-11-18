@@ -44,20 +44,23 @@ app.set('port', port)
 app.use(routes)
 
 // cors config
-app.use(cors({
-  origin: [process.env.CLIENT_PRODUCTION_URL, process.env.BACKEND_URL, 'http://localhost:3000', 'http://localhost:8080', '*'],
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-}))
+// app.use(cors({
+//   origin: [process.env.CLIENT_PRODUCTION_URL, process.env.BACKEND_URL, 'http://localhost:3000', 'http://localhost:8080', '*'],
+//   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+//   credentials: true,
+//   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+// }))
 
 /* eslint-disable no-unused-vars */
 app.use((error, req, res, next) => {
   console.log(error)
+  handleResponse(res, 400, error.message, error)
+})
+
+app.use((request, response, next) => {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-  handleResponse(res, 400, error.message, error)
 })
 
 const server = (http.createServer(app))
