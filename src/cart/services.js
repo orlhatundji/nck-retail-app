@@ -1,4 +1,5 @@
 import { filterNullProp, handleResponse } from '../helpers/util'
+import ItemModel from '../item/model'
 import CartModel from './model'
 
 class CartServices {
@@ -18,6 +19,15 @@ class CartServices {
             delete cart.__v
             return handleResponse(res, 200, 'Inventory item updated successfully', cart)
         }).clone()
+        
+        ItemModel.findOneAndUpdate(
+            { itemId: req.body.itemId },
+            {
+                $set: {
+                    isPurchased: true
+                }
+            }
+        ).clone()
     }
 }
 

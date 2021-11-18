@@ -20,7 +20,7 @@ class ItemServices {
     }
 
     static async getInventory(req, res) {
-            await ItemModel.find({}, async(err, data) => {
+            await ItemModel.find({ isPurchased: false }, async(err, data) => {
             if (err) {
                 return handleResponse(res, 400, 'Unable to get inventory data')
             }
