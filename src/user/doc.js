@@ -3,7 +3,7 @@ const userDoc = {
         post: {
             tags: ['User'],
             summary: 'To register a new user',
-            description: 'To register a new user',
+            description: 'To register a new user as admin or regular user',
             parameters: [
                 {
                     name: 'body',
@@ -27,7 +27,7 @@ const userDoc = {
                             },
                             role: {
                                 type: 'string',
-                                example: 'user'
+                                example: 'user || admin'
                             },
                             password: {
                                 type: 'string',
@@ -63,7 +63,7 @@ const userDoc = {
         post: {
             tags: ['User'],
             summary: 'To log a user in',
-            description: 'User login endpoint',
+            description: 'User login endpoint. Ensure to copy the token and add to the header for authorization',
             parameters: [
                 {
                     name: 'body',

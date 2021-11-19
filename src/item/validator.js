@@ -28,7 +28,7 @@ const validateBody = {
       .isEmpty()
       .withMessage('category cannot not be empty')
       .trim()
-      .isIn(['hardware', 'software', 'electronics'])
+      .isIn(['hardware', 'software', 'electronics', 'others'])
       .withMessage('Category is not acceptable')
   ],
   getItem: [

@@ -28,7 +28,7 @@ const itemDoc = {
                             category: {
                                 type: 'string',
                                 description: 'Must be among the options ',
-                                example: 'electronics'
+                                example: 'hardware || software || electronics || others'
                             }
                         }
                     }

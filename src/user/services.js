@@ -20,7 +20,7 @@ class UserServices {
         }
         await UserModel.create(user, async(err, data) => {
             if (err) {
-                console.log('Error', err.message)
+                console.error('Error', err.message)
                 return handleResponse(res, 400, 'Signing up was not successful')
             }
             const userDetail = data.toObject()

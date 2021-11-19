@@ -8,7 +8,7 @@ class ItemServices {
         const item = { title, description, price, category }
         await ItemModel.create(item, async(err, data) => {
             if (err) {
-                console.log('Error', err.message)
+                console.error('Error', err.message)
                 return handleResponse(res, 400, 'Unable to create inventory item')
             }
             const userDetail = data.toObject()
@@ -29,7 +29,7 @@ class ItemServices {
     }
 
     static async getInventoryItem(req, res) {
-        await ItemModel.findOne({ itemId: req.params.itemId}, { _id:0, __v:0 }, async(err, data) => {
+        await ItemModel.findOne({ itemId: req.params.itemId, isPurchased: false }, { _id:0, __v:0 }, async(err, data) => {
             if(err) {
                 return handleResponse(res, 400, 'Unable to get inventory item')
             }

@@ -10,7 +10,7 @@ const doc = {
   info: {
     version: '1.0.0',
     title: 'Inventory Management',
-    description: 'An Inventory Management Application'
+    description: 'An Inventory Management Application Documentation. Please use an API client like Postman for testing'
   },
   host: process.env.BACKEND_URL || 'localhost:8080',
   basePath: '/api/v1',
